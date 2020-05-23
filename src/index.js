@@ -4,7 +4,7 @@ import { ConnectedRouter } from 'connected-react-router';
 import { Route, Switch } from 'react-router';
 import { Provider } from 'react-redux';
 
-import ContractForm from 'pages/ContractForm';
+import Game from 'pages/Game';
 
 import store, { history } from './store';
 
@@ -20,7 +20,7 @@ ReactDOM.render(
     <ConnectedRouter history={history}>
       <Switch>
         <Route exact path="/">
-          <ContractForm />
+          <Game />
         </Route>
       </Switch>
     </ConnectedRouter>
