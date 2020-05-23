@@ -6,7 +6,7 @@ export default {
   shapes: {
     paper: {
       icon: paperIcon,
-      mainColor: '#e8b941',
+      mainColor: '#4181e8',
       resultAgainsOponents: {
         paper: 'tie',
         rock: 'win',
@@ -16,7 +16,7 @@ export default {
     },
     rock: {
       icon: rockIcon,
-      mainColor: '#4181e8',
+      mainColor: '#e84157',
       resultAgainsOponents: {
         paper: 'lose',
         rock: 'tie',
@@ -26,7 +26,7 @@ export default {
     },
     scissors: {
       icon: scissorsIcon,
-      mainColor: '#e84157',
+      mainColor: '#e8b941',
       resultAgainsOponents: {
         paper: 'win',
         rock: 'lose',
