@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux'
 
-import Shape from 'components/Shape';
+import ShapeSelector from 'components/ShapeSelector';
 
 function mapStateToProps(state) {
   return {
@@ -12,15 +12,9 @@ function mapStateToProps(state) {
 function Game({ shapes }) {
   if (!shapes) return 'Loading...';
 
-  const toRender = Object.keys(shapes).map((shapeName) => {
-    const shape = shapes[shapeName];
-
-    return <Shape key={shape.type} shape={shape} />;
-  });
-
   return (
     <div>
-      { toRender }
+      <ShapeSelector shapes={shapes} onClick={ console.log }/>
     </div>
   );
 }

@@ -19,16 +19,16 @@ const InnerCircle = styled.div`
   border-radius: 50%;
   box-shadow: inset 0px 10px 5px 0px rgba(168,168,168,1);
   display: flex;
-  height: 12rem;
+  height: 80%;
   justify-content: center;
-  width: 12rem;
+  width: 80%;
 `;
 
 const ShapeImage = styled.img`
-  width: 6rem;
+  width: 50%;
 `;
 
-function Shape({ shape }) {
+function Shape({ className, shape, onClick }) {
   const {
     icon,
     mainColor,
@@ -37,7 +37,7 @@ function Shape({ shape }) {
   } = shape;
 
   return (
-    <ColoredBorder color={mainColor}>
+    <ColoredBorder className={className} color={mainColor} onClick={() => onClick(shape)}>
       <InnerCircle>
         <ShapeImage src={icon} alt={type} />
       </InnerCircle>

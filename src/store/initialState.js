@@ -2,9 +2,15 @@ import paperIcon from 'assets/shapes/icon-paper.svg';
 import rockIcon from 'assets/shapes/icon-rock.svg';
 import scissorsIcon from 'assets/shapes/icon-scissors.svg';
 
+import {
+  PAPER,
+  SCISSORS,
+  ROCK,
+} from 'utils/constants/shapes';
+
 export default {
   shapes: {
-    paper: {
+    [PAPER]: {
       icon: paperIcon,
       mainColor: '#4181e8',
       resultAgainsOponents: {
@@ -12,9 +18,9 @@ export default {
         rock: 'win',
         scissors: 'lose',
       },
-      type: 'paper',
+      type: PAPER,
     },
-    rock: {
+    [ROCK]: {
       icon: rockIcon,
       mainColor: '#e84157',
       resultAgainsOponents: {
@@ -22,9 +28,9 @@ export default {
         rock: 'tie',
         scissors: 'win',
       },
-      type: 'rock',
+      type: ROCK,
     },
-    scissors: {
+    [SCISSORS]: {
       icon: scissorsIcon,
       mainColor: '#e8b941',
       resultAgainsOponents: {
@@ -32,7 +38,7 @@ export default {
         rock: 'lose',
         scissors: 'tie',
       },
-      type: 'scissors',
+      type: SCISSORS,
     },
   },
 }
