@@ -32,7 +32,6 @@ function Shape({ className, shape, onClick }) {
   const {
     icon,
     mainColor,
-    resultAgainsOponents,
     type,
   } = shape;
 
