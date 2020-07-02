@@ -5,7 +5,8 @@ const BoardContainer = styled.div `
   align-items: center;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  height: 100vh;
+  justify-content: space-around;
 `;
 
 

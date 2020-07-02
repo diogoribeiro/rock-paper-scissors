@@ -7,7 +7,7 @@ const HeaderContainer = styled.div `
   border-radius: 10px;
   display: flex;
   justify-content: space-between;
-  max-width: 90%;
+  max-width: 80%;
   width: 500px;
   padding: 1.5rem 2rem;
 `;
