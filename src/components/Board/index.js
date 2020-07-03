@@ -7,6 +7,7 @@ const BoardContainer = styled.div `
   flex-direction: column;
   height: 100vh;
   justify-content: space-evenly;
+  max-height: 1000px;
 `;
 
 

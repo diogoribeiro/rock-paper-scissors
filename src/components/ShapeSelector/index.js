@@ -21,10 +21,20 @@ const SelectorContainer = styled.div `
   padding: 5rem;
   position: relative;
   width: 32rem;
+
+  @media (min-width: 768px) {
+    height: 42rem;
+    width: 55rem;
+  }
 `;
 
 const ShapeIcon = styled(Shape) `
   position: absolute;
+
+  @media (min-width: 768px) {
+    height: 25rem;
+    width: 25rem;
+  }
 `;
 
 const ShapePaper = styled(ShapeIcon) `
