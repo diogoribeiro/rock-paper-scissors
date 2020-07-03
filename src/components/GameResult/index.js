@@ -22,6 +22,7 @@ const Selection = styled.div `
 `;
 
 const ResultShape = styled(Shape) `
+  box-shadow: ${({ winner }) => winner ? '0px 0px 5px 40px rgba(31,55,86, 0.5), 0px 0px 5px 80px rgba(31,55,86, 0.3), 0px 0px 5px 120px rgba(31,55,86, 0.2);' : 'none'};
   @media (min-width: 600px) and (max-width: 991px) {
     height: 24rem;
     width: 24rem;
@@ -80,12 +81,24 @@ const PlayAgain = styled.button `
   letter-spacing: 0.3rem;
 `;
 
-function resultMessage(playerSelection, computerSelection) {
-  let message = 'DRAW';
+function winner(playerSelection, computerSelection) {
   // TODO refactor this conditional statement
   if (playerSelection.resultAgainsOponents[computerSelection.type.toLowerCase()] === 'win') {
-    message = 'YOU WIN';
+    return playerSelection;
   } else if (playerSelection.resultAgainsOponents[computerSelection.type.toLowerCase()] === 'lose') {
+    return computerSelection;
+  }
+
+  return undefined;
+}
+
+function resultMessage(playerSelection, computerSelection) {
+  let message = 'DRAW';
+  const winnerSelection = winner(playerSelection, computerSelection);
+  
+  if (winnerSelection === playerSelection) {
+    message = 'YOU WIN';
+  } else if (winnerSelection === computerSelection) {
     message = 'YOU LOSE';
   }
 
@@ -93,11 +106,17 @@ function resultMessage(playerSelection, computerSelection) {
 }
 
 function GameResult({ playerSelection, computerSelection, onPlayAgain }) {
+  const isPlayerWinner = winner(playerSelection, computerSelection) === playerSelection;
+  const isComputerWinner = winner(computerSelection, playerSelection) === computerSelection;
   return (
     <Fragment>
       <ShapesContainer>
         <Selection>
-          <ResultShape shape={playerSelection} onClick={ () => {}} />
+          <ResultShape
+            shape={playerSelection}
+            onClick={ () => {}}
+            winner={isPlayerWinner}
+          />
           <SelectionCopy>YOU PICKED</SelectionCopy>
         </Selection>
         <LargeResultContainer>
@@ -107,7 +126,11 @@ function GameResult({ playerSelection, computerSelection, onPlayAgain }) {
           </PlayAgain>
         </LargeResultContainer>
         <Selection>
-          <ResultShape shape={computerSelection} onClick={ () => {}} />
+          <ResultShape
+            shape={computerSelection}
+            onClick={ () => {}}
+            winner={isComputerWinner}
+          />
           <SelectionCopy>THE HOUSE PICKED</SelectionCopy>
         </Selection>
       </ShapesContainer>
