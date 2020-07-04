@@ -3,6 +3,8 @@ import styled from 'styled-components/macro';
 
 import Shape from 'components/Shape';
 
+import winner from 'utils/winner';
+
 const ShapesContainer = styled.div `
   align-items: center;
   display: flex;
@@ -92,24 +94,12 @@ const PlayAgain = styled.button `
   letter-spacing: 0.3rem;
 `;
 
-function winner(playerSelection, computerSelection) {
-  // TODO refactor this conditional statement
-  if (playerSelection.resultAgainsOponents[computerSelection.type.toLowerCase()] === 'win') {
-    return playerSelection;
-  } else if (playerSelection.resultAgainsOponents[computerSelection.type.toLowerCase()] === 'lose') {
-    return computerSelection;
-  }
-
-  return undefined;
-}
-
-function resultMessage(playerSelection, computerSelection) {
+function resultMessage(isPlayerWinner, isComputerWinner) {
   let message = 'DRAW';
-  const winnerSelection = winner(playerSelection, computerSelection);
   
-  if (winnerSelection === playerSelection) {
+  if (isPlayerWinner) {
     message = 'YOU WIN';
-  } else if (winnerSelection === computerSelection) {
+  } else if (isComputerWinner) {
     message = 'YOU LOSE';
   }
 
@@ -117,8 +107,10 @@ function resultMessage(playerSelection, computerSelection) {
 }
 
 function GameResult({ playerSelection, computerSelection, onPlayAgain }) {
-  const isPlayerWinner = winner(playerSelection, computerSelection) === playerSelection;
-  const isComputerWinner = winner(computerSelection, playerSelection) === computerSelection;
+  const matchWinner = winner(playerSelection, computerSelection);
+  const isPlayerWinner =  matchWinner === playerSelection;
+  const isComputerWinner = matchWinner === computerSelection;
+
   return (
     <Fragment>
       <ShapesContainer>
@@ -131,7 +123,7 @@ function GameResult({ playerSelection, computerSelection, onPlayAgain }) {
           <SelectionCopy>YOU PICKED</SelectionCopy>
         </Selection>
         <ResultContainer desktop>
-          <Result>{resultMessage(playerSelection, computerSelection)}</Result>
+          <Result>{resultMessage(isPlayerWinner, isComputerWinner)}</Result>
           <PlayAgain onClick={onPlayAgain}>
             PLAY AGAIN
           </PlayAgain>
@@ -146,7 +138,7 @@ function GameResult({ playerSelection, computerSelection, onPlayAgain }) {
         </Selection>
       </ShapesContainer>
       <ResultContainer>
-        <Result>{resultMessage(playerSelection, computerSelection)}</Result>
+        <Result>{resultMessage(isPlayerWinner, isComputerWinner)}</Result>
         <PlayAgain onClick={onPlayAgain}>
           PLAY AGAIN
         </PlayAgain>
