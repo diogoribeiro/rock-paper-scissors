@@ -22,7 +22,25 @@ const Selection = styled.div `
 `;
 
 const ResultShape = styled(Shape) `
-  box-shadow: ${({ winner }) => winner ? '0px 0px 5px 40px rgba(31,55,86, 0.5), 0px 0px 5px 80px rgba(31,55,86, 0.3), 0px 0px 5px 120px rgba(31,55,86, 0.2);' : 'none'};
+  box-shadow: ${
+    ({ winner }) => winner
+      ? `0px 0px 5px 20px rgba(255, 255, 255, 0.05),
+        0px 0px 5px 60px rgba(255, 255, 255, 0.05),
+        0px 0px 5px 100px rgba(255, 255, 255, 0.05)`
+      : 'none'
+  };
+  z-index: ${({ winner }) => winner ? -1 : 'auto'};
+
+  @media (min-width: 600px) {
+    box-shadow: ${
+      ({ winner }) => winner
+        ? `0px 0px 5px 40px rgba(255, 255, 255, 0.05),
+          0px 0px 5px 100px rgba(255, 255, 255, 0.05),
+          0px 0px 5px 180px rgba(255, 255, 255, 0.05)`
+        : 'none'
+    };  
+  }
+
   @media (min-width: 600px) and (max-width: 991px) {
     height: 24rem;
     width: 24rem;
@@ -48,19 +66,11 @@ const SelectionCopy = styled.span `
 `;
 
 const ResultContainer = styled.div `
-  display: flex;
+  display: ${({ desktop }) => desktop ? 'none' : 'flex'};
   flex-direction: column;
 
   @media (min-width: 768px) {
-    display: none;
-  }
-`;
-
-const LargeResultContainer = styled(ResultContainer) `
-  display: none;
- 
-  @media (min-width: 768px) {
-    display: flex;
+    display: ${({ desktop }) => desktop ? 'flex' : 'none'};
     flex-direction: column;
   }
 `;
@@ -73,6 +83,7 @@ const Result = styled.span `
 `;
 
 const PlayAgain = styled.button `
+  background: hsl(0, 0%, 100%);
   border: none;
   border-radius: 10px;
   cursor: pointer;
@@ -119,12 +130,12 @@ function GameResult({ playerSelection, computerSelection, onPlayAgain }) {
           />
           <SelectionCopy>YOU PICKED</SelectionCopy>
         </Selection>
-        <LargeResultContainer>
+        <ResultContainer desktop>
           <Result>{resultMessage(playerSelection, computerSelection)}</Result>
           <PlayAgain onClick={onPlayAgain}>
             PLAY AGAIN
           </PlayAgain>
-        </LargeResultContainer>
+        </ResultContainer>
         <Selection>
           <ResultShape
             shape={computerSelection}
