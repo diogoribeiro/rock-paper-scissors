@@ -11,22 +11,6 @@ import when from 'utils/when';
 import { computeScore, setComputerMove, updatePlayerSelectedShape } from 'actions'
 import { USER_PLAYER, COMPUTER_PLAYER } from 'utils/constants/users';
 
-function mapStateToProps(state) {
-  return {
-    score: state.score || 0,
-    shapes: state.shapes,
-    match: state.match,
-  };
-}
-
-function mapDispatchToProps(dispatch) {
-  return {
-    computeScore: (playerSelection, computerSelection) => dispatch(computeScore(playerSelection, computerSelection)),
-    updatePlayerSelectedShape: (player, shape) => dispatch(updatePlayerSelectedShape(player, shape)),
-    setComputerMove: shapes => dispatch(setComputerMove(shapes)),
-  }
-}
-
 function renderSelector(shapes, setPlayerSelection) {
   return <ShapeSelector shapes={shapes} onClick={setPlayerSelection}/>;
 }
@@ -80,6 +64,22 @@ function Game({
       { when(playerSelection !== undefined)(() => renderGameResult(playerSelection, computerSelection, resetGame))}
     </Board>
   );
+}
+
+function mapStateToProps(state) {
+  return {
+    score: state.score || 0,
+    shapes: state.shapes,
+    match: state.match,
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    computeScore: (playerSelection, computerSelection) => dispatch(computeScore(playerSelection, computerSelection)),
+    updatePlayerSelectedShape: (player, shape) => dispatch(updatePlayerSelectedShape(player, shape)),
+    setComputerMove: shapes => dispatch(setComputerMove(shapes)),
+  }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Game);
