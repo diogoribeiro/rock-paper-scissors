@@ -1,6 +1,6 @@
 import styled from 'styled-components/macro';
 
-const ScoreContainer = styled.div `
+const ScoreContainer = styled.div`
   align-items: center;
   background: hsl(0, 0%, 100%);
   border-radius: 5px;

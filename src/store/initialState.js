@@ -4,11 +4,7 @@ import paperIcon from 'assets/shapes/icon-paper.svg';
 import rockIcon from 'assets/shapes/icon-rock.svg';
 import scissorsIcon from 'assets/shapes/icon-scissors.svg';
 
-import {
-  PAPER,
-  SCISSORS,
-  ROCK,
-} from 'utils/constants/shapes';
+import { PAPER, SCISSORS, ROCK } from 'utils/constants/shapes';
 
 export default {
   shapes: {
@@ -43,4 +39,4 @@ export default {
       type: SCISSORS,
     },
   },
-}
+};

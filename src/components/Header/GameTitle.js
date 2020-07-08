@@ -1,6 +1,6 @@
 import styled from 'styled-components/macro';
 
-const GameTitle = styled.div `
+const GameTitle = styled.div`
   color: hsl(0, 0%, 100%);
   display: flex;
   flex-direction: column;

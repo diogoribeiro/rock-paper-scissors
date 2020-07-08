@@ -1,6 +1,6 @@
 import styled from 'styled-components/macro';
 
-const SelectionCopy = styled.span `
+const SelectionCopy = styled.span`
   color: hsl(0, 0%, 100%);
   font-size: 1.5rem;
   font-weight: 500;

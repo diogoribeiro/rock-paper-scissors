@@ -9,7 +9,7 @@ function addToScore(value) {
   return {
     type: ADD_TO_SCORE,
     value,
-  }
+  };
 }
 
 export function updatePlayerSelectedShape(player, shape) {
@@ -19,7 +19,7 @@ export function updatePlayerSelectedShape(player, shape) {
       player,
       shape,
     },
-  }
+  };
 }
 
 export function setComputerMove(shapes) {
@@ -33,7 +33,7 @@ export function computeScore() {
     const playerSelection = match[USER_PLAYER];
     const computerSelection = match[COMPUTER_PLAYER];
     const matchWinner = winner(playerSelection, computerSelection);
-    const isPlayerWinner =  matchWinner === playerSelection;
+    const isPlayerWinner = matchWinner === playerSelection;
     const isComputerWinner = matchWinner && !isPlayerWinner;
 
     let increment = 0;
@@ -43,7 +43,7 @@ export function computeScore() {
     } else if (isComputerWinner) {
       increment = -1;
     }
-  
+
     dispatch(addToScore(increment));
-  }
+  };
 }

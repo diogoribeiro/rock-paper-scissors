@@ -2,7 +2,7 @@ import styled from 'styled-components/macro';
 
 import selectorBg from 'assets/bg-triangle.svg';
 
-const SelectorContainer = styled.div `
+const SelectorContainer = styled.div`
   background: ${() => `url(${selectorBg})`};
   background-position: center;
   background-repeat: no-repeat;

@@ -1,6 +1,6 @@
 import styled from 'styled-components/macro';
 
-const Selection = styled.div `
+const Selection = styled.div`
   align-items: center;
   display: flex;
   flex-direction: column;

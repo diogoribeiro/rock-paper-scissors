@@ -1,6 +1,6 @@
 import styled from 'styled-components/macro';
 
-const HeaderContainer = styled.div `
+const HeaderContainer = styled.div`
   align-items: center;
   border: 3px solid hsl(217, 16%, 45%);
   border-radius: 10px;

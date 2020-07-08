@@ -1,7 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import styled from 'styled-components/macro';
 
-const BoardContainer = styled.div `
+const BoardContainer = styled.div`
   align-items: center;
   display: flex;
   flex-direction: column;
@@ -10,13 +12,16 @@ const BoardContainer = styled.div `
   max-height: 1000px;
 `;
 
-
 function Board({ children }) {
-  return (
-    <BoardContainer>
-      { children }
-    </BoardContainer>
-  );
+  return <BoardContainer>{children}</BoardContainer>;
 }
+
+Board.propTypes = {
+  children: PropTypes.node,
+};
+
+Board.defaultProps = {
+  children: undefined,
+};
 
 export default Board;

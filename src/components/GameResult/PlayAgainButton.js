@@ -1,6 +1,6 @@
 import styled from 'styled-components/macro';
 
-const PlayAgainButton = styled.button `
+const PlayAgainButton = styled.button`
   background: hsl(0, 0%, 100%);
   border: none;
   border-radius: 10px;
